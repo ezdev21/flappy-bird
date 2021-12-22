@@ -14,3 +14,8 @@ func spawn_obstacle():
 	var obstacle=Obstacle.instance()
 	add_child(obstacle)
 	obstacle.position.y=randi()%400+150
+func start():
+	timer.start()
+	
+func stop():
+	timer.stop()

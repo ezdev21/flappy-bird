@@ -21,3 +21,7 @@ position = Vector2( -6, 625 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScrollArea"]
 position = Vector2( 33, 553.5 )
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Pipe" to="." method="_on_Pipe_body_entered"]
+[connection signal="body_entered" from="Pipe2" to="." method="_on_Pipe2_body_entered"]
+[connection signal="body_exited" from="ScrollArea" to="." method="_on_ScrollArea_body_exited"]

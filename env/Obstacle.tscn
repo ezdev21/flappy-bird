@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://env/Pipe.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28.5, 73.5 )
 
 [node name="Obstacle" type="Node2D"]
 
@@ -9,6 +12,10 @@ position = Vector2( 68, 479 )
 rotation = 3.14159
 
 [node name="Pipe2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -3, 623 )
+position = Vector2( -6, 625 )
 
 [node name="ScrollArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScrollArea"]
+position = Vector2( 33, 553.5 )
+shape = SubResource( 1 )

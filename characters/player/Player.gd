@@ -2,16 +2,19 @@ extends RigidBody2D
 
 export var FLAP_FORCE=-200
 class_name Player
+
 var started=false
 onready var animator=$AnimationPlayer
 
+signal died
+
 func _physics_process(delta):
-	 if Input.is_action_just_pressed('flap'):
+	 if Input.is_action_just_pressed('flap') && alive:
 		  if !started:
 			  start() 
 			  flap()
-	 if rotation_degrees===MAX_ROTATION_DEGREES:
-		angular_veloccity=0
+	 if rotation_degrees==MAX_ROTATION_DEGREES:
+		angular_velocity=0
 		rotation_degrees=MAX_ROTATION_DEGREES
 	 if linear_velocity.y>0:
 		if rotation_degrees<=90:
@@ -29,3 +32,8 @@ func flap():
 	linear_velocity.y=FLAP_FORCE
 	angular_velocity=-8.0
 		
+func die():
+	if !alive: return
+	alive=false
+	animator.stop()
+	emit_signal('died')

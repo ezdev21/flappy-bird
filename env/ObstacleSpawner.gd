@@ -12,6 +12,10 @@ func _ready():
 func _on_Timer_timeout():
 	spawn_obstacle()
 
+func new_game():
+	self.score=0
+	obstacle_spawner.start()
+
 func spawn_obstacle():
 	var obstacle=Obstacle.instance()
 	add_child(obstacle)

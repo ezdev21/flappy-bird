@@ -1,10 +1,16 @@
 extends RigidBody2D
 
 export var FLAP_FORCE=-200
+
 class_name Player
 
 var started=false
+
 onready var animator=$AnimationPlayer
+
+onready var hit=$Hit
+
+onready var wing=$Wing
 
 signal died
 
@@ -31,6 +37,7 @@ func start():
 func flap():
 	linear_velocity.y=FLAP_FORCE
 	angular_velocity=-8.0
+	wing.play()
 		
 func die():
 	if !alive: return

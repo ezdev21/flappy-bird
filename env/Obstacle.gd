@@ -1,6 +1,9 @@
 extends Node2D
 
+onready var point=$Point
+
 signal Score 
+
 const SPEED=200
 
 func _physics_process(delta):
@@ -9,19 +12,17 @@ func _physics_process(delta):
 		queue_free()
 		#global_position.x=500
 
-
 func _on_Pipe_body_entered(body):
 	if body is Player:
 		if body.has_method('die'):
 			body.die()
-
 
 func _on_Pipe2_body_entered(body):
 	if body is Player:
 		if body.has_method('die'):
 			body.die()
 
-
 func _on_ScrollArea_body_exited(body):
 	if body is Player:
+		point.play()
 		emit_signal('score')

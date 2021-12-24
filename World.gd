@@ -3,7 +3,7 @@ extends Node2D
 onready var hud=$Hud
 onready var ground=$Ground
 onready var obstacle_spawner=$ObstacleSpawner
-
+onready var menu_layer=$MenuLayer
 var score=0 setget set_score
 
 func _ready():
@@ -31,3 +31,4 @@ func game_over():
 	obstacle_spawner.stop()
 	ground.get_node("AnimationPlayer").stop()
 	get_tree().call_group("obstacles","seta-physics_process",false)
+	menu_layer.init_game_over_menu(score)

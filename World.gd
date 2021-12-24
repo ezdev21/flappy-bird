@@ -4,7 +4,7 @@ onready var hud=$Hud
 
 onready var obstacle_spawner=$ObstacleSpawner
 
-var score setget set_score
+var score=0 setget set_score
 
 func _ready():
 	obstacle_spawner.connect('obstacle_created',self,'_on_obstacle_created')
@@ -16,4 +16,4 @@ func set_score(new_score):
 	score=new_score
 	hud.update_score(score)
 func _on_obstacle_created(obs):
-	obs.connect()	
+	obs.connect('score',self,'player_score')
